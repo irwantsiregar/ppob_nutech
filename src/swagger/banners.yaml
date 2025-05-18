@@ -1,0 +1,41 @@
+components:
+  schemas:
+    Banner:
+      type: object
+      properties:
+        banner_name:
+          type: string
+          description: The banner_name of the bannners
+          example: 'Banner 1'
+        banner_image:
+          type: string
+          description: The banner_image of the banners
+          example: 'https://nutech-integrasi.app/dummy.jpg'
+        description:
+          type: string
+          description: The description of the banners
+          example: 'Lerem Ipsum Dolor sit amet'
+paths:
+  /api/banner:
+    get:
+      summary: Get all banner
+      description: Get all banner from the database
+      tags: [Banners]
+      responses:
+        200:
+          description: A list of banner
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Banner'
+        404:
+          description: Banner not found
