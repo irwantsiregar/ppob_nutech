@@ -1,0 +1,66 @@
+components:
+  schemas:
+    Register:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The email from the user
+          example: 'user_nutech@nutech-integrasi.com'
+        first_name:
+          type: string
+          description: The first name from user
+          example: 'User'
+        last_name:
+          type: string
+          description: The last name from user
+          example: 'Nutech'
+        password:
+          type: string
+          description: The password from user
+          example: 'abcdef1234'
+paths:
+  /api/registration:
+    post:
+      summary: Register User
+      description: Crea a user to the database
+      tags: [1. Module Membership]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+      responses:
+        200:
+          description: Request Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 0
+                  message:
+                    type: string
+                    default: 'Success registration, please login'
+                  data:
+                    type: object
+                    default: null
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 102
+                  message:
+                    type: string
+                    default: 'Email parameters are not formatted correctly'
+                  data:
+                    type: object
+                    default: null

@@ -16,7 +16,7 @@ components:
           description: The description of the banners
           example: 'Lerem Ipsum Dolor sit amet'
 paths:
-  /api/banner:
+  /api/banners:
     get:
       summary: Get all banner
       description: Get all banner from the database

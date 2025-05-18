@@ -12,6 +12,7 @@ export function returnSuccess(
     message,
     data,
   };
+
   return res.status(statusCode).json(returnResponse);
 }
 
