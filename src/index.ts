@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import env from './configs/env.config';
-import bodyParser from "body-parser";
+import bodyParser from 'body-parser';
 import router from './routes/index';
 import { setupSwagger } from './swagger';
 
