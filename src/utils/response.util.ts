@@ -1,21 +1,32 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
-export function returnSuccess(
-  req: Request,
-  res: Response,
-  statusCode: number,
-  message: string,
-  data: unknown
-) {
-  const returnResponse = {
-    status: 'OK',
-    message,
-    data,
-  };
+export default {
+  success(res: Response, statusCode: number, message: string, data: unknown) {
+    const returnResponse = {
+      status: statusCode,
+      message,
+      data,
+    };
 
-  return res.status(statusCode).json(returnResponse);
-}
+    res.status(statusCode).json(returnResponse);
+  },
 
-export function returnNonSuccess(req: Request, res: Response, statusCode: number, message: string) {
-  return res.status(statusCode).json({ status: 'ERROR', message });
-}
+  nonSuccess(res: Response, statusCode: number, message: string) {
+    res.status(statusCode).json({ status: statusCode, message });
+  },
+
+  unauthorized(res: Response, message: string = 'Unauthorized', statusCode: number = 403) {
+    res.status(statusCode).json({
+      status: statusCode,
+      message,
+      data: null,
+    });
+  },
+  notFound(res: Response, message: string = 'Not found', statusCode: number = 404) {
+    res.status(statusCode).json({
+      status: statusCode,
+      message,
+      data: null,
+    });
+  },
+};

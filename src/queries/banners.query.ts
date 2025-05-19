@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import pool from '../database/pool';
 import { IBanner } from '../models/banners.model ';
 
@@ -12,9 +13,11 @@ export class BannersQuery {
     return result.rows;
   }
   async addBanner({ banner_name, banner_image, description }: IBanner) {
+    const id = `banner-${nanoid(8)}`;
+
     const query = {
-      text: 'INSERT INTO banners VALUES($1, $2, $3) RETURNING *',
-      values: [banner_name, banner_image, description],
+      text: 'INSERT INTO banners VALUES($1, $2, $3, $4) RETURNING *',
+      values: [id, banner_name, banner_image, description],
     };
 
     const result = await pool.query(query);

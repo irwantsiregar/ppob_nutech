@@ -18,7 +18,18 @@ components:
         password:
           type: string
           description: The password from user
-          example: 'abcdef1234'
+          example: 'Abcdef1234'
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The email from the user
+          example: 'user_nutech@nutech-integrasi.com'
+        password:
+          type: string
+          description: The password from user
+          example: 'Abcdef1234'
 paths:
   /api/registration:
     post:
@@ -61,6 +72,66 @@ paths:
                   message:
                     type: string
                     default: 'Email parameters are not formatted correctly'
+                  data:
+                    type: object
+                    default: null
+  /api/login:
+    post:
+      summary: User Login
+      description: User sign in
+      tags: [1. Module Membership]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        200:
+          description: Login Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 0
+                  message:
+                    type: string
+                    default: 'Login success'
+                  data:
+                    type: object
+                    default: null
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 102
+                  message:
+                    type: string
+                    default: 'Email parameters are not formatted correctly'
+                  data:
+                    type: object
+                    default: null
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 103
+                  message:
+                    type: string
+                    default: 'Username or password is wrong'
                   data:
                     type: object
                     default: null
