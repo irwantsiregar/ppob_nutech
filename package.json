@@ -21,7 +21,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2",
-    "nanoid": "^5.1.5",
     "npm": "^11.4.0",
     "pg": "^8.16.0",
     "swagger-jsdoc": "^6.2.8",

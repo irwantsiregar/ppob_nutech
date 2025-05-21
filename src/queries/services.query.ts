@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+import nanoid from '../utils/generateRandomString.util';
 import pool from '../database/pool';
 import { IService } from '../models/services.model';
 

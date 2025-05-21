@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+import nanoid from '../utils/generateRandomString.util';
 import pool from '../database/pool';
 import { IRegister, IUserInput } from '../models/users.model';
 import { encrypt } from '../utils/encryption.util';
