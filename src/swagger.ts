@@ -37,7 +37,11 @@ const options: swaggerJSDoc.Options = {
     servers: [
       {
         url: `http://localhost:${env.PORT}`,
-        description: 'Developement server'
+        description: 'Development server',
+      },
+      {
+        url: 'https://ppob-nutech-test.up.railway.app/api',
+        description: 'Production server',
       },
     ],
   },
