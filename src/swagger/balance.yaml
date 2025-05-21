@@ -1,0 +1,55 @@
+components:
+  schemas:
+    Balance:
+      type: object
+      properties:
+        balance:
+          type: number
+          description: The now balance
+          example: 125000
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  bearerAuth: []
+paths:
+  /api/balance:
+    get:
+      summary: Get balance
+      description: Get balance now
+      tags: [3. Module Transaction]
+      responses:
+        200:
+          description: The balance now
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 200
+                  message:
+                    type: string
+                    default: 'Get balance success'
+                  data:
+                    type: object
+                    $ref: '#/components/schemas/Balance'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 400
+                  message:
+                    type: string
+                    default: 'Top Up amount should be exist and number'
+                  data:
+                    type: object
+                    default: null

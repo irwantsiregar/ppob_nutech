@@ -1,12 +1,4 @@
 components:
-  components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-  security:
-    bearerAuth: []
   schemas:
     Profile:
       type: object
@@ -27,14 +19,19 @@ components:
           type: string
           description: The banner_image of the banners
           example: 'https://yoururlapi.com/profile.jpeg'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 paths:
   /api/profile:
     get:
+      security:
+        bearerAuth: []
       summary: Get User Profile
       description: Get data profile from the database
       tags: [1. Module Membership]
-      security:
-        bearerAuth: []
       responses:
         200:
           description: Request successfully
@@ -45,14 +42,13 @@ paths:
                 properties:
                   status:
                     type: number
-                    default: 0
+                    default: 200
                   message:
                     type: string
-                    default: 'Success'
+                    default: 'Success get profile'
                   data:
                     type: object
-                    items:
-                      $ref: '#/components/schemas/Profile'
+                    $ref: '#/components/schemas/Profile'
         401:
           description: Unauthorized
           content:

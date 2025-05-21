@@ -1,0 +1,143 @@
+components:
+  schemas:
+    Transaction_POST:
+      type: object
+      properties:
+        service_code:
+          type: string
+          description: The service_code from service
+          example: 'PLN'
+    Transaction_GET:
+      type: object
+      properties:
+        invoice_number:
+          type: string
+          description: The invoice number transaction
+          example: 'INV17082023-001'
+        transaction_type:
+          type: string
+          description: The transaction type
+          example: 'TOPUP'
+        service_code:
+          type: string
+          description: The service code from transaction
+          example: 'PLN'
+        service_name:
+          type: string
+          description: The service name from transaction
+          example: 'PLN Prabayar'
+        total_amount:
+          type: string
+          description: Total amount from transaction
+          example: 120000
+        create_on:
+          type: string
+          description: Date in transaction
+          example: '2023-08-17T10:10:10.000Z'
+    HistoryTransaction:
+      type: object
+      properties:
+        invoice_number:
+          type: string
+          description: The invoice number transaction
+          example: 'INV17082023-001'
+        transaction_type:
+          type: string
+          description: The transaction type
+          example: 'TOPUP'
+        description:
+          type: string
+          description: Description from transaction
+          example: 'Top Up balance'
+        total_amount:
+          type: string
+          description: Total amount from transaction
+          example: 120000
+        create_on:
+          type: string
+          description: Date in transaction
+          example: '2023-08-17T10:10:10.000Z'
+paths:
+  /api/transaction:
+    post:
+      summary: Transaction
+      description: Transaction with user
+      tags: [3. Module Transaction]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction_POST'
+      responses:
+        200:
+          description: Request Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 200
+                  message:
+                    type: string
+                    default: 'Transaction success'
+                  data:
+                    type: object
+                    default: null
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 400
+                  message:
+                    type: string
+                    default: 'Service not found!'
+                  data:
+                    type: object
+                    default: null
+  /api/transaction/history:
+    post:
+      summary: Transaction history
+      description: User transaction history
+      tags: [3. Module Transaction]
+      responses:
+        200:
+          description: Get transaction success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 200
+                  message:
+                    type: string
+                    default: 'Get transaction success'
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HistoryTransaction'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 401
+                  message:
+                    type: string
+                    default: 'Unauthorized'
+                  data:
+                    type: object
+                    default: null

@@ -24,7 +24,7 @@ paths:
     get:
       summary: Get all service
       description: Get all service from the database
-      tags: [Services]
+      tags: [2. Module Information]
       responses:
         200:
           description: A list of service

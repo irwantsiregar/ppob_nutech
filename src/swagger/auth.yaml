@@ -18,7 +18,7 @@ components:
         password:
           type: string
           description: The password from user
-          example: 'Abcdef1234'
+          example: 'Abcdef12345'
     Login:
       type: object
       properties:
@@ -29,7 +29,7 @@ components:
         password:
           type: string
           description: The password from user
-          example: 'Abcdef1234'
+          example: 'Abcdef12345'
 paths:
   /api/registration:
     post:
@@ -96,7 +96,7 @@ paths:
                 properties:
                   status:
                     type: number
-                    default: 0
+                    default: 200
                   message:
                     type: string
                     default: 'Login success'
@@ -112,7 +112,7 @@ paths:
                 properties:
                   status:
                     type: number
-                    default: 102
+                    default: 400
                   message:
                     type: string
                     default: 'Email parameters are not formatted correctly'
@@ -128,10 +128,10 @@ paths:
                 properties:
                   status:
                     type: number
-                    default: 103
+                    default: 401
                   message:
                     type: string
-                    default: 'Username or password is wrong'
+                    default: 'Unauthorized'
                   data:
                     type: object
                     default: null

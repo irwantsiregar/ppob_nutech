@@ -6,7 +6,7 @@
 - **ESLint**: Pre-configured for consistent code style and linting.
 - **Swagger UI**: Auto-generated API documentation using [Swagger](https://swagger.io/).
 - **PostgreSQL**: Pre-configured with PostgreSQL for database integration.
-- **Node PG Migrate**: Node.js database migration management built exclusively for postgres.
+- **Node PG Migrate**: Node.js database migration management built exclusively for postgres using [`node-pg-migrate`](https://salsita.github.io/node-pg-migrate/).
 
 ## Getting Started
 
@@ -88,4 +88,12 @@ API documentation is automatically generated with Swagger and available at:
 
 ```
 http://localhost:3000/api-docs
+```
+
+## ERD Documentation
+
+Entity-Relationship Diagrams with [Diagram.io](https://dbdiagram.io/d/SIMS-PPOB-Nutech-682881591227bdcb4ebe8941)
+
+```
+https://dbdiagram.io/d/SIMS-PPOB-Nutech-682881591227bdcb4ebe8941
 ```

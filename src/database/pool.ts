@@ -1,16 +1,6 @@
-/*eslint global-require: "error"*/
-import ENV from '../configs/env.config';
-
 const { Pool } = require('pg');
+import configPGPool from './parse_url';
 
-const Config = {
-  port: ENV.PGPORT,
-  host: ENV.PGHOST,
-  user: ENV.PGUSER,
-  password: ENV.PGPASSWORD,
-  database: ENV.PGDATABASE,
-};
-
-const pool = new Pool(Config);
+const pool = new Pool(configPGPool);
 
 export default pool;

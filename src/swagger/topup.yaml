@@ -1,0 +1,70 @@
+components:
+  schemas:
+    TopUp:
+      type: object
+      properties:
+        top_up_amount:
+          type: number
+          description: The total amount
+          example: 125000
+paths:
+  /api/topup:
+    post:
+      summary: TopUp Balance
+      description: The add balance with topup
+      tags: [3. Module Transaction]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopUp'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 200
+                  message:
+                    type: string
+                    default: 'Top up balance success'
+                  data:
+                    type: object
+                    $ref: '#/components/schemas/TopUp'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 400
+                  message:
+                    type: string
+                    default: 'The amount parameter can only be a number and cannot be smaller than 0'
+                  data:
+                    type: object
+                    default: null
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: number
+                    default: 103
+                  message:
+                    type: string
+                    default: 'Unauthorized'
+                  data:
+                    type: object
+                    default: null
