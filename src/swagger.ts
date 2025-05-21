@@ -36,12 +36,12 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url: 'https://ppob-nutech-test.up.railway.app/api',
-        description: 'Production server',
+        url: 'https://ppob-nutech-test.up.railway.app',
+        description: 'Production Server',
       },
       {
         url: `http://localhost:${env.PORT}`,
-        description: 'Development server',
+        description: 'Development Server',
       },
     ],
   },
